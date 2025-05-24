@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike Shoe Promotion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .nike-promo-card {
+            width: 100%;
+            max-width: 380px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .nike-promo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nike-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #111;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .shoe-image-container {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #f5f5f5, #e5e5e5);
+        }
+        
+        .shoe-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            transition: transform 0.5s ease;
+            padding: 20px;
+        }
+        
+        .nike-promo-card:hover .shoe-image {
+            transform: scale(1.05) rotate(-5deg);
+        }
+        
+        .promo-content {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .shoe-title {
+            font-size: 1.8rem;
+            color: #111;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .shoe-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+        
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #111;
+            margin-bottom: 20px;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1rem;
+            margin-left: 5px;
+        }
+        
+        .register-button {
+            display: inline-block;
+            background-color: #111;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 250px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .register-button:hover {
+            background-color: #e60000;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(230, 0, 0, 0.3);
+        }
+        
+        .purchase-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #111;
+        }
+        
+        .modal-text {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .modal-product {
+            font-weight: bold;
+            color: #e60000;
+        }
+        
+        .modal-close {
+            background-color: #111;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .modal-close:hover {
+            background-color: #e60000;
+        }
+        
+        @media (max-width: 480px) {
+            .shoe-title {
+                font-size: 1.5rem;
+            }
+            
+            .promo-content {
+                padding: 20px;
+            }
+            
+            .modal-content {
+                padding: 20px;
+            }
+            
+            .modal-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nike-promo-card">
+        <div class="nike-badge">%Promo</div>
+        
+        <div class="shoe-image-container">
+            <img 
+                class="shoe-image" 
+                src="c:\Users\ALVAN BACHRUL F\Downloads\royal blue, shoes, sambas, adidas, aestetic, fit.jpeg" 
+                alt="Adidas Samba"
+            >
+        </div>
+        
+        <div class="promo-content">
+            <h2 class="shoe-title">Adidas Samba</h2>
+            <p class="shoe-description">
+                Harga Sesuai Dengan kenyamanan
+            </p>
+            
+            <div class="price">
+                Rp.2.500.000 <span class="original-price">Rp.3.500.000</span>
+            </div>
+            
+            <button id="preOrderBtn" class="register-button">Daftar Sekarang</button>
+        </div>
+    </div>
+
+
+    <!-- Purchase Confirmation Modal -->
+    <div id="purchaseModal" class="purchase-modal">
+        <div class="modal-content">
+            <h3 class="modal-title">🎉 Pesanan Telah Di Terima</h3>
+            <p class="modal-text">
+                Terima Kasih Telah Memesan <span class="modal-product"><h1>Sepatu Adidas Samba</h1></span>.
+            </p>
+            <p class="modal-text">
+                Dengan Kode Pemesanan: <strong>#Adidas-<span id="orderNumber"></span></strong>
+            </p>
+            <p class="modal-text">
+                Kami akan memberitahukan anda ketika barang anda siap untuk dikirim.
+            </p>
+            <button class="modal-close" id="closeModal">Tutup</button>
+        </div>
+    </div>
+
+    <script>
+        
+        const preOrderBtn = document.getElementById('preOrderBtn');
+        const purchaseModal = document.getElementById('purchaseModal');
+        const closeModal = document.getElementById('closeModal');
+        const orderNumber = document.getElementById('orderNumber');
+        
+        // Generate random order number
+        function generateOrderNumber() {
+            return Math.floor(100000 + Math.random() * 900000);
+        }
+        
+                preOrderBtn.addEventListener('click', function() {
+            
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 200);
+            
+            orderNumber.textContent = generateOrderNumber();
+            
+            purchaseModal.style.display = 'flex';
+            
+            console.log('Pre-order submitted for Sepatu NIKE SUPER');
+        });
+        
+        closeModal.addEventListener('click', function() {
+            purchaseModal.style.display = 'none';
+        });
+        
+        purchaseModal.addEventListener('click', function(e) {
+            if (e.target === purchaseModal) {
+                purchaseModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
